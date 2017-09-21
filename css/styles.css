@@ -1,0 +1,29 @@
+.content-holder {
+    height: 100%;
+    top: 150px;
+    background-color: gray;
+    text-align: center;
+}
+
+.navbar-holder {
+    width: 100%;
+    background-color: red;
+    text-align: center;
+}
+
+#user-info {
+    position: fixed;
+    height: 150px;
+    width: 30%;
+    top: 0px;
+    left: 0px;
+    background-color: red;
+}
+
+#content-logged-in {
+    background-color: green;
+}
+
+#content-not-logged-in {
+    background-color: purple;
+}
