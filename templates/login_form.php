@@ -1,25 +1,35 @@
-<form action="login.php" method="POST">
+<div class="row">
 
-    <?php if ($error != ""): ?>
-        <p>
-            <?= htmlspecialchars($error) ?>
+    <div class="col-sm-offset-4 col-sm-4">
+
+        <form class="form-horizontal" action="login.php" method="POST">
+
+            <?php if ($error != ""): ?>
+                <p class="bg-danger">
+                    <?= htmlspecialchars($error) ?>
+                </p>
+            <?php endif; ?>
+
+            <div class="form-group text-left">
+                <label for="username">Username:</label>
+                <input class="form-control" type="text" name="username" value="<?= htmlspecialchars($usernameValue) ?>" placeholder="KeepInTouch Username" />
+            </div>
+
+            <div class="form-group text-left">
+                <label for="password">Password:</label>
+                <input class="form-control" type="password" name="password" placeholder="KeepInTouch Password" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Log In!</button>
+            </div>
+
+        </form>
+
+        <p class="text-muted">
+            <a href="register.php">Register</a>
         </p>
-    <?php endif; ?>
 
-    <p>
-        <label for="username">Username:
-            <input type="text" name="username" value="<?= htmlspecialchars($usernameValue) ?>" />
-        </label>
-    </p>
+    </div>
 
-    <p>
-        <label for="password">Password:
-            <input type="password" name="password" />
-        </label>
-    </p>
-
-    <input type="submit" value="Log In" />
-
-</form>
-
-<p><a href="register.php">Register</a></p>
+</div>

@@ -9,8 +9,6 @@
     $title = "Register";
     $registerForm = "register_form.php";
 
-    $u = isset($_SESSION["id"]) ? UserManager::getUserById($_SESSION["id"]) : false;
-
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // If GET request
 

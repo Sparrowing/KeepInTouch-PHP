@@ -1,14 +1,20 @@
 <?php
 
+    require_once("../Properties.php");
+
     class Database {
 
         private static $connection;
 
         private static function connectDb() {
             // TODO Probably more error checking
-            
+
             // Connect to database with information from properties file constants
-            self::$connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+            $host     = Properties::DB_HOST;
+            $username = Properties::DB_USERNAME;
+            $password = Properties::DB_PASSWORD;
+            $dbName   = Properties::DB_NAME;
+            self::$connection = mysqli_connect($host, $username, $password, $dbName);
         }
 
         public static function queryDb($query) {

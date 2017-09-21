@@ -6,7 +6,10 @@
     require_once("../classes/PostManager.php");
     require_once("../classes/Post.php");
 
-    $u = getLogin();
+    // Redirect unregistered users
+    if (!$u) {
+        redirect("index.php");
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
@@ -48,17 +51,9 @@
             exit;
         }
 
-        // TEMPORARY
-
         $newPost = PostManager::createPost($u, $postTitle, $postBody);
 
-        render("newpost_form.php",
-               ["title" => "New Post",
-                "user" => $u,
-                "error" => $newPost->getTimestamp(),
-                "titleValue" => "",
-                "bodyValue" => ""]
-        );
+        redirect("userhome.php?u=" . $u->getId());
     }
 
  ?>

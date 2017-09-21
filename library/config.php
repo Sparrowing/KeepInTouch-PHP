@@ -7,4 +7,6 @@
     //      (session_start() returns true if it's successful and false if not)
     session_start();
 
+    $u = getLogin();
+
  ?>

@@ -5,8 +5,6 @@
     require_once("../classes/User.php");
     require_once("../classes/UserManager.php");
 
-    $u = isset($_SESSION["id"]) ? UserManager::getUserById($_SESSION["id"]) : false;
-
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // If GET request
         render("login_form.php",

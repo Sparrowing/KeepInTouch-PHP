@@ -1,1 +1,1 @@
-<p>Coming soon!</p>
+<p class="text-muted">Coming soon!</p>

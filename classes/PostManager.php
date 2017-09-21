@@ -30,6 +30,8 @@
         private static function makePostArray($result) {
             $posts = [];
 
+            if (!$result) return $posts;
+
             while ($row = $result->fetch_row()) {
                 $currentPost = self::makePostFromArray($row);
                 $posts[] = $currentPost;

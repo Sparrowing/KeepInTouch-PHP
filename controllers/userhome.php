@@ -7,7 +7,10 @@
     require_once("../classes/Post.php");
     require_once("../classes/PostManager.php");
 
-    $u = getLogin();
+    // Redirect unregistered users
+    if (!$u) {
+        redirect("index.php");
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
