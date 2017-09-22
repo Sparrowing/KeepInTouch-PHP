@@ -84,10 +84,22 @@
         public static function getPostsByUser($user) {
 
             // Create query
+            // Note - orders them newest to oldest
             $query = "SELECT * FROM " . Constants::$POST_TABLE . " WHERE " .
-                    self::$USERID_COL . " = '" . $user->getId() . "'";
+                    self::$USERID_COL . " = '" . $user->getId() . "' ORDER BY " .
+                    self::$TIMESTAMP_COL . " DESC";
 
             // Search database
+            $result = Database::queryDb($query);
+
+            return self::makePostArray($result);
+        }
+
+        public static function getAllPosts() {
+
+            $query = "SELECT * FROM " . Constants::$POST_TABLE . " ORDER BY " .
+                    self::$TIMESTAMP_COL . " DESC";
+
             $result = Database::queryDb($query);
 
             return self::makePostArray($result);

@@ -1,5 +1,7 @@
 <?php
 
+    require_once("UserManager.php");
+
     class Post {
 
         private $id;
@@ -21,6 +23,12 @@
         public static function formatTimestamp($rawTimestamp) {
             // TODO
             return $rawTimestamp;
+        }
+
+        // Returns an object of the user that authored this post
+        public function getPostUser() {
+            // Match and map the id of the author ($userId) to a user object
+            return UserManager::getUserById($this->userId);
         }
 
         public function getId() {

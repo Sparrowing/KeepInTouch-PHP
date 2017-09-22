@@ -53,7 +53,7 @@
 
         login($user->getId());
 
-        redirect("index.php");
+        redirect("userhome.php?u=" . $user->getId());
     }
 
  ?>

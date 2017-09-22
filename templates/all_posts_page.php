@@ -1,4 +1,4 @@
-<h3 class="text-muted">Home of <?= $username ?></h3>
+<h3 class="text-muted">All Posts</h3>
 
 <?php if ($posts == false): ?>
     <p>No posts yet!</p>
@@ -12,6 +12,7 @@
                 <div class="post-holder">
 
                     <h3><?= $post->getTitle() ?>
+                        <small class="text-muted">- <?= $post->getPostUser()->getUsername() ?></small>
                         <br />
                         <small><?= $post->getTimestamp() ?></small>
                     </h3>
@@ -23,4 +24,4 @@
         <?php endforeach; ?>
 
     </ul>
-<?php endif;
+<?php endif; ?>
