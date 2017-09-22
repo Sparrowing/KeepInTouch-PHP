@@ -44,11 +44,6 @@
         // TODO Handle render errors
     }
 
-    function renderError($values = []) {
-        extract($values);
-        require("../templates/error_page.php");
-    }
-
     function sqlEscape($escapeString) {
         return Database::getConnection()->escape_string($escapeString);
     }

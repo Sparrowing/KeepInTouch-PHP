@@ -31,6 +31,10 @@
             return UserManager::getUserById($this->userId);
         }
 
+        public function getUrl() {
+            return "posts.php?p=" . $this->id . "&u=" . $this->userId;
+        }
+
         public function getId() {
             return $this->id;
         }

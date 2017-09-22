@@ -18,7 +18,10 @@
 
             $user = UserManager::getUserById(sqlEscape($_GET["u"]));
             if ($user == false) {
-                renderError(["error" => "User not found."]);
+                render("not_found.php",
+                       ["title" => "Not Found",
+                        "user" => $u]
+                );
                 exit;
             }
 

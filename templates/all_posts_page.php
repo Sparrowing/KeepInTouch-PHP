@@ -11,16 +11,17 @@
             <li class="list-group-item">
                 <div class="post-holder">
 
-                    <h3><?= $post->getTitle() ?>
+                    <h3>
+                        <a href="<?= $post->getUrl() ?>"><?= $post->getTitle() ?></a>
                         <small class="text-muted">-
-                            <a href="userhome.php?u=<?= $post->getPostUser()->getId() ?>">
+                            <a href="userhome.php?u=<?= $post->getUserId() ?>">
                                 <?= $post->getPostUser()->getUsername() ?>
                             </a>
                         </small>
                         <br />
                         <small><?= $post->getTimestamp() ?></small>
                     </h3>
-                    <p class="post-body"><?= $post->getBody() ?>
+                    <p class="post-body"><?= $post->getBody() ?></p>
 
                 </div>
             </li>

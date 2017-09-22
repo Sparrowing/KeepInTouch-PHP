@@ -11,7 +11,8 @@
             <li class="list-group-item">
                 <div class="post-holder">
 
-                    <h3><?= $post->getTitle() ?>
+                    <h3>
+                        <a href="<?= $post->getUrl() ?>"><?= $post->getTitle() ?></a>
                         <br />
                         <small><?= $post->getTimestamp() ?></small>
                     </h3>
