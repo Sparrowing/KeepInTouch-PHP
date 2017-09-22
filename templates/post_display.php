@@ -2,7 +2,7 @@
 
     <h2 class="text-left">
         <a href="<?= $post->getUrl() ?>">
-            <?= $post->getTitle() ?>
+            <b><?= $post->getTitle() ?></b>
         </a> -
         <small>
             <a href="userhome.php?u=<?= $post->getPostUser()->getId() ?>">
@@ -13,7 +13,7 @@
         <br />
 
         <small class="text-muted">
-            <?= $post->getTimestamp() ?>
+            <i><?= $post->getTimestamp() ?></i>
         </small>
 
     </h2>

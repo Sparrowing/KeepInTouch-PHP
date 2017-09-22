@@ -22,7 +22,7 @@
                 <div class="container-fluid">
 
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.php">KeepInTouch</a>
+                        <a class="navbar-brand" href="index.php"><b>KeepInTouch</b></a>
                     </div>
 
                     <ul class="nav navbar-nav">
@@ -37,7 +37,8 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><p class="navbar-text"><?= $user == false ? "Not Logged In" : "Logged In As User " . $user->getUsername() ?></p></li>
+                        <li><p class="navbar-text"><?= $user == false ? "Not Logged In" :
+                            "Logged In As User <a href=\"userhome.php\"><b>" . $user->getUsername() . "</b></a>" ?></p></li>
                     </ul>
 
                 </div>

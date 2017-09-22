@@ -12,9 +12,9 @@
                 <div class="post-holder">
 
                     <h3 class="text-left">
-                        <a href="<?= $post->getUrl() ?>"><?= $post->getTitle() ?></a>
+                        <a href="<?= $post->getUrl() ?>"><b><?= $post->getTitle() ?></b></a>
                         <br />
-                        <small><?= $post->getTimestamp() ?></small>
+                        <small class="text-muted"><i><?= $post->getTimestamp() ?></i></small>
                     </h3>
                     <p class="post-body text-justify"><?= $post->getBody() ?>
 
