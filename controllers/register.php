@@ -32,7 +32,7 @@
                     ["title" => $title,
                      "user" => $u,
                      "error" => "Must fill in all fields.",
-                     "usernameValue" => $_POST["username"]]
+                     "usernameValue" => htmlEscape($_POST["username"])]
             );
 
             // Exit script
@@ -51,7 +51,7 @@
                    ["title" => $title,
                     "user" => $u,
                     "error" => "Invalid username.",
-                    "usernameValue" => $_POST["username"]]
+                    "usernameValue" => htmlEscape($_POST["username"])]
             );
             exit;
         }
@@ -63,7 +63,7 @@
                    ["title" => $title,
                     "user" => $u,
                     "error" => "Username already in use.",
-                    "usernameValue" => $_POST["username"]]
+                    "usernameValue" => htmlEscape($_POST["username"])]
             );
             exit;
         }
@@ -74,7 +74,7 @@
                    ["title" => $title,
                     "user" => $u,
                     "error" => "Invalid password.",
-                    "usernameValue" => $_POST["username"]]
+                    "usernameValue" => htmlEscape($_POST["username"])]
             );
             exit;
         }
@@ -86,7 +86,7 @@
                    ["title" => $title,
                     "user" => $u,
                     "error" => "Password and confirmation do not match.",
-                    "usernameValue" => $_POST["username"]]
+                    "usernameValue" => htmlEscape($_POST["username"])]
             );
             exit;
         }

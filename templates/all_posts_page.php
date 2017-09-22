@@ -12,7 +12,11 @@
                 <div class="post-holder">
 
                     <h3><?= $post->getTitle() ?>
-                        <small class="text-muted">- <?= $post->getPostUser()->getUsername() ?></small>
+                        <small class="text-muted">-
+                            <a href="userhome.php?u=<?= $post->getPostUser()->getId() ?>">
+                                <?= $post->getPostUser()->getUsername() ?>
+                            </a>
+                        </small>
                         <br />
                         <small><?= $post->getTimestamp() ?></small>
                     </h3>

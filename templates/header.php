@@ -22,22 +22,22 @@
                 <div class="container-fluid">
 
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="/keepintouch/controllers/index.php">KeepInTouch</a>
+                        <a class="navbar-brand" href="index.php">KeepInTouch</a>
                     </div>
 
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/keepintouch/controllers/index.php">Home</a></li>
-                        <li><a href="/keepintouch/controllers/register.php">Register</a></li>
-                        <li><a href="/keepintouch/controllers/login.php">Login</a></li>
+                        <li class="active"><a href="index.php">Home</a></li>
+                        <li><a href="register.php">Register</a></li>
+                        <li><a href="login.php">Login</a></li>
                         <?php if ($user != false): ?>
-                            <li><a href="/keepintouch/controllers/logout.php">Logout</a></li>
-                            <li><a href="/keepintouch/controllers/newpost.php">New Post</a></li>
-                            <li><a href="/keepintouch/controllers/userhome.php?u=<?= $user->getId() ?>">My Page</a></li>
+                            <li><a href="logout.php">Logout</a></li>
+                            <li><a href="newpost.php">New Post</a></li>
+                            <li><a href="userhome.php?u=<?= $user->getId() ?>">My Page</a></li>
                         <?php endif; ?>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><p class="navbar-text"><?= $user == false ? "Not Logged In" : "Logged In As User " . htmlspecialchars($user->getUsername()) ?></p></li>
+                        <li><p class="navbar-text"><?= $user == false ? "Not Logged In" : "Logged In As User " . $user->getUsername() ?></p></li>
                     </ul>
 
                 </div>

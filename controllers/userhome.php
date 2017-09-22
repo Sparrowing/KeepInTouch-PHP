@@ -31,8 +31,7 @@
             exit;
         }
 
-        renderError(["error" => "User not found."]);
-        exit;
+        redirect("userhome.php?u=" . $u->getId());
     }
 
  ?>

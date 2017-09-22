@@ -12,7 +12,7 @@
 
             <div class="form-group text-left">
                 <label for="username">Username:</label>
-                <input class="form-control" type="text" name="username" value="<?= htmlspecialchars($usernameValue) ?>" placeholder="KeepInTouch Username" />
+                <input class="form-control" type="text" name="username" value="<?= $usernameValue ?>" placeholder="KeepInTouch Username" />
             </div>
 
             <div class="form-group text-left">

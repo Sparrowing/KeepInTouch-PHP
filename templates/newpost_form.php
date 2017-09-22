@@ -12,12 +12,12 @@
 
             <div class="form-group text-left">
                 <label for="title">Title:</label>
-                <input class="form-control" type="text" name="title" value="<?= htmlspecialchars($titleValue) ?>" placeholder="Post Title" />
+                <input class="form-control" type="text" name="title" value="<?= $titleValue ?>" placeholder="Post Title" />
             </div>
 
             <div class="form-group text-left">
                 <label for="body">Body:</label>
-                <textarea class="form-control" name="body" placeholder="Type Post Body Here"><?= htmlspecialchars($bodyValue) ?></textarea>
+                <textarea class="form-control" name="body" placeholder="Type Post Body Here"><?= $bodyValue ?></textarea>
             </div>
 
             <div class="form-group">
