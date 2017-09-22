@@ -32,8 +32,7 @@
         // Returns true if supplied password matches the password of this user,
         //    else false.
         public function isPasswordMatch($password) {
-            if (password_verify($password, $this->pwHash))
-                return true;
+            if (password_verify($password, $this->pwHash)) return true;
             return false;
         }
 

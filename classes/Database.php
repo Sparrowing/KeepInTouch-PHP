@@ -7,8 +7,6 @@
         private static $connection;
 
         private static function connectDb() {
-            // TODO Probably more error checking
-
             // Connect to database with information from properties file constants
             $host     = Properties::DB_HOST;
             $username = Properties::DB_USERNAME;

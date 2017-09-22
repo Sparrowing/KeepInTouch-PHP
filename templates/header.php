@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="../css/styles.css" />
 
         <title>
-            KeepInTouch - <?= htmlspecialchars($title) ?>
+            KeepInTouch - <?= $title ?>
         </title>
 
     </head>
