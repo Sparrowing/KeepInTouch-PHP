@@ -11,12 +11,12 @@
             <li class="list-group-item">
                 <div class="post-holder">
 
-                    <h3>
+                    <h3 class="text-left">
                         <a href="<?= $post->getUrl() ?>"><?= $post->getTitle() ?></a>
                         <br />
                         <small><?= $post->getTimestamp() ?></small>
                     </h3>
-                    <p class="post-body"><?= $post->getBody() ?>
+                    <p class="post-body text-justify"><?= $post->getBody() ?>
 
                 </div>
             </li>

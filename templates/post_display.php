@@ -1,18 +1,25 @@
 <div class="post-holder">
 
-    <h2><?= $post->getTitle() ?>
-        <h4>
+    <h2 class="text-left">
+        <a href="<?= $post->getUrl() ?>">
+            <?= $post->getTitle() ?>
+        </a> -
+        <small>
             <a href="userhome.php?u=<?= $post->getPostUser()->getId() ?>">
                 <?= $post->getPostUser()->getUsername() ?>
             </a>
-        </h4>
+        </small>
+
+        <br />
+
         <small class="text-muted">
             <?= $post->getTimestamp() ?>
         </small>
+
     </h2>
 
     <hr>
 
-    <p class="post-body"><?= $post->getBody() ?></p>
+    <p class="post-body text-justify"><?= $post->getBody() ?></p>
 
 </div>

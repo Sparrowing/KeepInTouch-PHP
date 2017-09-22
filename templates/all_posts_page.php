@@ -11,7 +11,7 @@
             <li class="list-group-item">
                 <div class="post-holder">
 
-                    <h3>
+                    <h3 class="text-left">
                         <a href="<?= $post->getUrl() ?>"><?= $post->getTitle() ?></a>
                         <small class="text-muted">-
                             <a href="userhome.php?u=<?= $post->getUserId() ?>">
@@ -21,7 +21,7 @@
                         <br />
                         <small><?= $post->getTimestamp() ?></small>
                     </h3>
-                    <p class="post-body"><?= $post->getBody() ?></p>
+                    <p class="post-body text-justify"><?= $post->getBody() ?></p>
 
                 </div>
             </li>
