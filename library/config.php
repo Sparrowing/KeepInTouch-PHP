@@ -1,6 +1,7 @@
 <?php
 
     require_once("functions.php");
+    require_once("../Properties.php");
 
     // Start/resume session
     // TODO Handle error in case of failed session Start

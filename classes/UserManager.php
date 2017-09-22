@@ -32,7 +32,7 @@
 
             // Create query
             // "INSERT INTO [usertable] ([usernameCol], [pwHashCol]) VALUES ("[username]", "[pwHash]")"
-            $query = "INSERT INTO " . Constants::$USER_TABLE . " (" . self::$USERNAME_COL .
+            $query = "INSERT INTO " . Properties::USER_TABLE . " (" . self::$USERNAME_COL .
                     ", " . self::$PW_HASH_COL . ") VALUES (\"" . $username .
                     "\", \"" . $pwHash . "\")";
 
@@ -52,7 +52,7 @@
         public static function getUserById($id) {
 
             // Create query
-            $query = "SELECT * FROM " . Constants::$USER_TABLE . " WHERE " .
+            $query = "SELECT * FROM " . Properties::USER_TABLE . " WHERE " .
                     self::$ID_COL . " = '" . $id . "'";
 
             // Check database
@@ -72,7 +72,7 @@
         public static function getUserByName($username) {
 
             // Create query
-            $query = "SELECT * FROM " . Constants::$USER_TABLE . " WHERE " .
+            $query = "SELECT * FROM " . Properties::USER_TABLE . " WHERE " .
                     self::$USERNAME_COL . " = '" . sqlEscape($username) . "'";
 
             // Check database
