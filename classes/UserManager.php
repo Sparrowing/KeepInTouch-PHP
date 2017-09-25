@@ -31,19 +31,20 @@
             $pwHash = User::hashPassword($password);
 
             // Create query
-            // "INSERT INTO [usertable] ([usernameCol], [pwHashCol]) VALUES ("[username]", "[pwHash]")"
-            $query = "INSERT INTO " . Properties::USER_TABLE . " (" . self::$USERNAME_COL .
-                    ", " . self::$PW_HASH_COL . ") VALUES (\"" . $username .
-                    "\", \"" . $pwHash . "\")";
+            $query = sprintf("INSERT INTO `%s` (%s, %s) VALUES (?, ?)",
+                    Properties::USER_TABLE, self::$USERNAME_COL, self::$PW_HASH_COL);
+            $params = [$username, $pwHash];
+            $pattern = "ss";
 
             // Query database
-            $result = Database::queryDb($query);
+            $result = Database::queryDb($query, $params, $pattern);
 
-            // Return false if user can't be inserted
-            if ($result == false) return false;
+            // TODO Add back in some checking to make sure a new user was actually able to be inserted before proceeding
+            // // Return false if user can't be inserted
+            // if ($result == false) return false;
 
             // Fetch and return new user
-            $id = mysqli_insert_id(Database::getConnection());
+            $id = Database::getConnection()->insert_id;
             $user = self::getUserById($id);
             return $user;
         }
@@ -52,11 +53,13 @@
         public static function getUserById($id) {
 
             // Create query
-            $query = "SELECT * FROM " . Properties::USER_TABLE . " WHERE " .
-                    self::$ID_COL . " = '" . $id . "'";
+            $query = sprintf("SELECT * FROM `%s` WHERE %s = ?",
+                    Properties::USER_TABLE, self::$ID_COL);
+            $params = [$id];
+            $pattern = "i";
 
             // Check database
-            $result = Database::queryDbRow($query);
+            $result = Database::queryDbRow($query, $params, $pattern);
 
             // Return false if user is not found
             if ($result == false) return false;
@@ -72,11 +75,13 @@
         public static function getUserByName($username) {
 
             // Create query
-            $query = "SELECT * FROM " . Properties::USER_TABLE . " WHERE " .
-                    self::$USERNAME_COL . " = '" . sqlEscape($username) . "'";
+            $query = sprintf("SELECT * FROM `%s` WHERE %s = ?",
+                    Properties::USER_TABLE, self::$USERNAME_COL);
+            $params = [$username];
+            $pattern = "s";
 
             // Check database
-            $result = Database::queryDbRow($query);
+            $result = Database::queryDbRow($query, $params, $pattern);
 
             // Return false if user is not found
             if ($result == false) return false;

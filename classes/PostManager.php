@@ -26,7 +26,6 @@
         }
 
         // Makes an array of post objects from mysqli query result
-        // NOT FUNCTIONAL YET
         private static function makePostArray($result) {
             $posts = [];
 
@@ -43,14 +42,15 @@
         // Creates a post in the database.  Returns the post in a post object.
         public static function createPost($user, $title, $body) {
             // TODO do more checking here to make sure the parameters are all valid to make a post
-            // TODO also probably find a better way to format this query statement
-            $query = "INSERT INTO " . Properties::POST_TABLE . " (" .
-                    self::$USERID_COL . ", " . self::$TITLE_COL . ", " .
-                    self::$BODY_COL . ") VALUES (\"" . $user->getId() . "\", \"" .
-                    sqlEscape($title) . "\", \"" . sqlEscape($body) . "\")";
 
-            // Query database
-            $result = Database::queryDb($query);
+            // Create query
+            $query = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
+                    Properties::POST_TABLE, self::$USERID_COL, self::$TITLE_COL, self::$BODY_COL);
+            $params = [$user->getID(), $title, $body];
+            $pattern = "iss";
+
+            // Check database
+            $result = Database::queryDb($query, $params, $pattern);
 
             // Return false if post can't be inserted
             if ($result == false) return false;
@@ -65,11 +65,13 @@
         public static function getPostById($id) {
 
             // Create query
-            $query = "SELECT * FROM " . Properties::POST_TABLE . " WHERE " .
-                    self::$ID_COL . " = '" . $id . "'";
+            $query = sprintf("SELECT * FROM `%s` WHERE %s = ?",
+                    Properties::POST_TABLE, self::$ID_COL);
+            $params = [$id];
+            $pattern = "i";
 
             // Check database
-            $result = Database::queryDbRow($query);
+            $result = Database::queryDbRow($query, $params, $pattern);
 
             // Return false if post is not found
             if ($result == false) return false;
@@ -85,21 +87,26 @@
 
             // Create query
             // Note - orders them newest to oldest
-            $query = "SELECT * FROM " . Properties::POST_TABLE . " WHERE " .
-                    self::$USERID_COL . " = '" . $user->getId() . "' ORDER BY " .
-                    self::$TIMESTAMP_COL . " DESC";
+            $query = sprintf("SELECT * FROM `%s` WHERE %s = ? ORDER BY %s DESC",
+                    Properties::POST_TABLE, self::$USERID_COL, self::$TIMESTAMP_COL);
+            $params = [$user->getId()];
+            $pattern = "i";
 
             // Search database
-            $result = Database::queryDb($query);
+            $result = Database::queryDb($query, $params, $pattern);
 
             return self::makePostArray($result);
         }
 
         public static function getAllPosts() {
 
-            $query = "SELECT * FROM " . Properties::POST_TABLE . " ORDER BY " .
-                    self::$TIMESTAMP_COL . " DESC";
+            // Create query
+            $query = sprintf("SELECT * FROM `%s` ORDER BY %s DESC",
+                    Properties::POST_TABLE, self::$TIMESTAMP_COL);
+            $params = false;
+            $pattern = "";
 
+            // Check database
             $result = Database::queryDb($query);
 
             return self::makePostArray($result);
