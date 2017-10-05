@@ -7,6 +7,7 @@ A rudimentary web application written in PHP that emulates a blogging platform, 
 * A user login system that allows for registering new users, logging in as a previous user, and logging out.
 * Registered users can author blog posts visible to all other users.
 * Registered users have their own 'home page' listing off all of their previously-made posts.
+* Registered users may delete any posts that they previously made.
 
 ## Uses
 
