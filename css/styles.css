@@ -7,3 +7,18 @@
 .post-body {
     word-wrap: break-word;
 }
+
+.footer {
+    width: auto;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.del-btn {
+    border-radius: 5px;
+    padding: 1px 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+}

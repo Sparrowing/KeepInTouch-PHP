@@ -29,7 +29,8 @@
                    ["title" => $user->getUsername(),
                     "user" => $u,
                     "username" => $user->getUsername(),
-                    "posts" => PostManager::getPostsByUser($user)]
+                    "posts" => PostManager::getPostsByUser($user),
+                    "isHomePage" => ($user->getId() == $u->getId())]
             );
             exit;
         }

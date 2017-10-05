@@ -62,6 +62,20 @@
             return $post;
         }
 
+        public static function deletePost($postId) {
+
+            // Create query
+            $query = sprintf("DELETE FROM `%s` WHERE %s = ?",
+                    Properties::POST_TABLE, self::$ID_COL);
+            $params = [$postId];
+            $pattern = "i";
+
+            // Run query
+            Database::queryDB($query, $params, $pattern);
+
+            // TODO add some error-checking to make sure the query went through
+        }
+
         public static function getPostById($id) {
 
             // Create query
