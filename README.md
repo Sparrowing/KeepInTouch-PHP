@@ -18,5 +18,5 @@ A rudimentary web application written in PHP that emulates a blogging platform, 
 **Currently unfinished.**
 
 Future tasks:
-* Add functionality to delete posts.
+* Reformat timestamps.
 * Additional error-checking in some areas.
