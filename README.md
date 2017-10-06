@@ -17,6 +17,3 @@ A rudimentary web application written in PHP that emulates a blogging platform, 
 ## Status
 
 **Currently unfinished.**
-
-Future tasks:
-* Additional error-checking in some areas.

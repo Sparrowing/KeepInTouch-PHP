@@ -41,7 +41,11 @@
 
         // Creates a post in the database.  Returns the post in a post object.
         public static function createPost($user, $title, $body) {
-            // TODO do more checking here to make sure the parameters are all valid to make a post
+
+            // Make sure inputs are valid and user exists
+            if (empty($title) || empty($body)) return false;
+            if (strlen($title) > 255) return false;
+            if ($user == null) return false;
 
             // Create query
             $query = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
@@ -71,9 +75,10 @@
             $pattern = "i";
 
             // Run query
-            Database::queryDB($query, $params, $pattern);
+            $result = Database::queryDB($query, $params, $pattern);
 
-            // TODO add some error-checking to make sure the query went through
+            // $result returns false if the query failed and true otherwise
+            return $result;
         }
 
         public static function getPostById($id) {

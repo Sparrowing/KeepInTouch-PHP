@@ -18,10 +18,15 @@
         // Check this post is owned by the logged in user
         // If post id isn't valid this if statement won't go through anyway
         if (PostManager::getPostById($postId)->getUserId() == $u->getId()) {
-            PostManager::deletePost($postId);
+
+            // Attempt to delete the post
+            $result = PostManager::deletePost($postId);
+
+            // Display error if post couldn't be deleted
+            if (!$result) redirect("error.php");
         }
 
-        // Whether it worked or not redirect back to user's page
+        // If it worked, redirect back to user's page
         redirect("userhome.php?u=" . $u->getId());
     }
 

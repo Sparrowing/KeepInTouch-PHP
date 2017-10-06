@@ -6,8 +6,6 @@
     require_once("Database.php");
     require_once("User.php");
 
-    // TODO Make a TableManager parent class for the different tables to share
-
     class UserManager {
 
         private static $ID_COL       = "id";
@@ -39,9 +37,8 @@
             // Query database
             $result = Database::queryDb($query, $params, $pattern);
 
-            // TODO Add back in some checking to make sure a new user was actually able to be inserted before proceeding
-            // // Return false if user can't be inserted
-            // if ($result == false) return false;
+            // If the query failed return false immediately
+            if (!$result) return false;
 
             // Fetch and return new user
             $id = Database::getConnection()->insert_id;

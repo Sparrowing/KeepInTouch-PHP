@@ -40,12 +40,14 @@
             require("../templates/footer.php");
         }
 
-        // If template doesn't exist, does nothing
-        // TODO Handle render errors
+        // If template doesn't exist or fails to render
+        echo "Something went wrong with rendering.";
     }
 
-    function sqlEscape($escapeString) {
-        return Database::getConnection()->escape_string($escapeString);
+    // Returns true if string $str starts with substring $start, else false.
+    function startsWith($str, $start) {
+        $length = strlen($start);
+        return (substr($str, 0, $length) == $start);
     }
 
  ?>

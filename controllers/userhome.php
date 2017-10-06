@@ -16,7 +16,7 @@
 
         if (!empty($_GET["u"])) {
 
-            $user = UserManager::getUserById(sqlEscape($_GET["u"]));
+            $user = UserManager::getUserById($_GET["u"]);
             if ($user == false) {
                 render("not_found.php",
                        ["title" => "Not Found",

@@ -97,6 +97,9 @@
         // Create user
         $newUser = UserManager::createUser($username, $password);
 
+        // Display error if user failed to be created
+        if (!$newUser) redirect("error.php");
+
         // Log user in
         login($newUser->getId());
 

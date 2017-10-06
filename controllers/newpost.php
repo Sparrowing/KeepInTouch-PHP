@@ -53,6 +53,9 @@
 
         $newPost = PostManager::createPost($u, $postTitle, $postBody);
 
+        // Display error if post somehow couldn't be created
+        if ($newPost) redirect("error.php");
+
         redirect("userhome.php?u=" . $u->getId());
     }
 
