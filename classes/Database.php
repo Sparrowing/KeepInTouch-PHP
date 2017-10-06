@@ -34,6 +34,7 @@
 
             // Return result, or false if anything went wrong
             if (startsWith($query, "SELECT")) {
+                
                 // Select returns false if it failed and that's then returned here,
                 //    else returns the query result
                 return $result;
