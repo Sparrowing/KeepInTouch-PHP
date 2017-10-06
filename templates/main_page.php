@@ -1,1 +1,1 @@
-<p>Welcome KeepInTouch!  Please <a href="login.php">Log In</a> to interact!</p>
+<p>Welcome to KeepInTouch!  Please <a href="login.php">Log In</a> to interact!</p>
