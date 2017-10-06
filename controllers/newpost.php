@@ -7,9 +7,7 @@
     require_once("../classes/Post.php");
 
     // Redirect unregistered users
-    if (!$u) {
-        redirect("index.php");
-    }
+    if (!$u) redirect("index.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
@@ -51,6 +49,7 @@
             exit;
         }
 
+        // Attempt to create post in the database
         $newPost = PostManager::createPost($u, $postTitle, $postBody);
 
         // Display error if post somehow couldn't be created

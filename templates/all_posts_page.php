@@ -1,7 +1,9 @@
 <h3 class="text-muted">All Posts</h3>
 
 <?php if ($posts == false): ?>
+
     <p>No posts yet!</p>
+
 <?php else: ?>
 
     <ul class="list-group">
@@ -12,6 +14,7 @@
                 <div class="post-holder">
 
                     <h3 class="text-left">
+
                         <a href="<?= $post->getUrl() ?>"><b><?= $post->getTitle() ?></b></a>
                         <small class="text-muted">-
                             <a href="userhome.php?u=<?= $post->getUserId() ?>">
@@ -20,7 +23,9 @@
                         </small>
                         <br />
                         <small class="text-muted"><i><?= $post->getTimestamp() ?></i></small>
+                        
                     </h3>
+
                     <p class="post-body text-justify"><?= $post->getBody() ?></p>
 
                 </div>
@@ -29,4 +34,5 @@
         <?php endforeach; ?>
 
     </ul>
+
 <?php endif; ?>

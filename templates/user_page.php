@@ -12,7 +12,9 @@
                 <div class="post-holder">
 
                     <h3 class="text-left">
+
                         <table>
+
                             <td>
                                 <a href="<?= $post->getUrl() ?>"><b><?= $post->getTitle() ?></b></a>
                             </td>
@@ -26,10 +28,13 @@
                                     </form>
                                 </td>
                             <?php endif; ?>
+
                         </table>
 
                         <small class="text-muted"><i><?= $post->getTimestamp() ?></i></small>
+
                     </h3>
+                    
                     <p class="post-body text-justify"><?= $post->getBody() ?>
 
                 </div>
@@ -38,4 +43,5 @@
         <?php endforeach; ?>
 
     </ul>
+
 <?php endif; ?>

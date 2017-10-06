@@ -2,6 +2,7 @@
 
     require_once("UserManager.php");
 
+    // Represents a single post entity
     class Post {
 
         private $id;
@@ -11,10 +12,10 @@
         private $timestamp;
 
         public function __construct($id, $userId, $title, $body, $timestamp) {
-            $this->id = $id;
-            $this->userId = $userId;
-            $this->title = $title;
-            $this->body = $body;
+            $this->id        = $id;
+            $this->userId    = $userId;
+            $this->title     = $title;
+            $this->body      = $body;
             $this->timestamp = self::formatTimestamp($timestamp);
         }
 
@@ -27,33 +28,22 @@
 
         // Returns an object of the user that authored this post
         public function getPostUser() {
+
             // Match and map the id of the author ($userId) to a user object
             return UserManager::getUserById($this->userId);
         }
 
+        // Fetch the individual post URL of this post
         public function getUrl() {
             return "posts.php?p=" . $this->id . "&u=" . $this->userId;
         }
 
-        public function getId() {
-            return $this->id;
-        }
-
-        public function getUserId() {
-            return $this->userId;
-        }
-
-        public function getTitle() {
-            return $this->title;
-        }
-
-        public function getBody() {
-            return $this->body;
-        }
-
-        public function getTimestamp() {
-            return $this->timestamp;
-        }
+        // Getters
+        public function getId()        { return $this->id; }
+        public function getUserId()    { return $this->userId; }
+        public function getTitle()     { return $this->title; }
+        public function getBody()      { return $this->body; }
+        public function getTimestamp() { return $this->timestamp; }
 
     }
 

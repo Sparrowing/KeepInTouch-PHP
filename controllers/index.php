@@ -6,7 +6,7 @@
     require_once("../classes/PostManager.php");
 
     if (!$u) {
-        render("main_page.php",
+        render("empty_page.php",
                ["title" => "Home",
                 "user" => $u]
         );

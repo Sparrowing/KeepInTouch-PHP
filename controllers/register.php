@@ -10,7 +10,6 @@
     $registerForm = "register_form.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        // If GET request
 
         // Render register page
         render($registerForm,
@@ -21,11 +20,9 @@
         );
 
     } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Else if POST request
 
-        // Check for empty fields
+        // If any empty fields
         if (empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["confirm"])) {
-            // If any empty fields
 
             // Re-render with error
             render($registerForm,
@@ -46,7 +43,7 @@
 
         // Make sure username is valid
         if (!User::isValidUsername($username)) {
-            // If username is not valid
+
             render($registerForm,
                    ["title" => $title,
                     "user" => $u,
@@ -58,7 +55,7 @@
 
         // Make sure username isn't already in use
         if (UserManager::getUserByName($username)) {
-            // If user already exists with name
+
             render($registerForm,
                    ["title" => $title,
                     "user" => $u,
@@ -68,8 +65,9 @@
             exit;
         }
 
+        // Check password is valid
         if (!User::isValidPassword($password)) {
-            // If password is not valid
+
             render($registerForm,
                    ["title" => $title,
                     "user" => $u,
@@ -81,7 +79,7 @@
 
         // Check that password matches confirmation
         if ($password !== $confirm) {
-            // If password and confirmation do not match
+
             render($registerForm,
                    ["title" => $title,
                     "user" => $u,
@@ -94,16 +92,16 @@
         // If code reaches this point, all form information is valid.  Can
         //    proceed to create user.
 
-        // Create user
+        // Attempt to create user in the database
         $newUser = UserManager::createUser($username, $password);
 
         // Display error if user failed to be created
         if (!$newUser) redirect("error.php");
 
-        // Log user in
+        // Log user in and redirect to index
+        
         login($newUser->getId());
 
-        // Redirect to index
         redirect("index.php");
 
     }

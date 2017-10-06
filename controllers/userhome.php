@@ -8,15 +8,16 @@
     require_once("../classes/PostManager.php");
 
     // Redirect unregistered users
-    if (!$u) {
-        redirect("index.php");
-    }
+    if (!$u) redirect("index.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         if (!empty($_GET["u"])) {
 
+            // Attempt to find user
             $user = UserManager::getUserById($_GET["u"]);
+
+            // If user is not found
             if ($user == false) {
                 render("not_found.php",
                        ["title" => "Not Found",
@@ -24,6 +25,8 @@
                 );
                 exit;
             }
+
+            // All is well, render the requested user page
 
             render("user_page.php",
                    ["title" => $user->getUsername(),
@@ -35,6 +38,7 @@
             exit;
         }
 
+        // If no u parameter was provided, just redirect to this user's home
         redirect("userhome.php?u=" . $u->getId());
     }
 

@@ -2,6 +2,7 @@
 
     require_once("../Properties.php");
 
+    // Manages access to database and database connection
     class Database {
 
         private static $connection;
@@ -31,15 +32,20 @@
             // Return false if nothing happened
             if ($statement->affected_rows == 0) return false;
 
-            // Return result or false if anything went wrong
+            // Return result, or false if anything went wrong
             if (startsWith($query, "SELECT")) {
+
                 // Select returns false if it failed and that's then returned here,
                 //    else returns the query result
                 return $result;
+
             } else if (startsWith($query, "INSERT")) {
+
                 // Also returns false if it failed
                 return $result;
+
             } else if (startsWith($query, "DELETE")) {
+
                 // If affected rows isn't zero then this worked
                 return true;
             }
@@ -48,14 +54,20 @@
         // Queries database to confirm a one-row result.  Returns false if query
         //    fails or provides a result longer than one row.
         public static function queryDbRow($query, $params, $pattern) {
+
             $result = self::queryDb($query, $params, $pattern);
+
             if ($result == false) return false;
             if ($result->num_rows > 1) return false;
+
             return $result;
         }
 
         public static function getConnection() {
+
+            // If not connected, connect
             if (!isset(self::$connection)) self::connectDb();
+
             return self::$connection;
         }
 

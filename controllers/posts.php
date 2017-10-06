@@ -8,10 +8,7 @@
     require_once("../classes/PostManager.php");
 
     // Redirect unregistered users
-    if (!$u) {
-        redirect("index.php");
-    }
-
+    if (!$u) redirect("index.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
 

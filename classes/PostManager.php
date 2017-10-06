@@ -1,11 +1,9 @@
 <?php
 
-    // Manages Post objects and how they interact with the database
-
-    require_once("../library/Constants.php");
     require_once("Database.php");
     require_once("Post.php");
 
+    // Manages Post objects and how they interact with the database
     class PostManager {
 
         private static $ID_COL        = "id";
@@ -14,21 +12,22 @@
         private static $BODY_COL      = "body";
         private static $TIMESTAMP_COL = "timestamp";
 
-        // Makes a post object from a single mysqli query row.
+        // Makes a post object from a single MySQLi query row.
         private static function makePostFromRow($row) {
             $r = $row->fetch_assoc();
             return new Post($r[self::$ID_COL], $r[self::$USERID_COL], $r[self::$TITLE_COL],
                     $r[self::$BODY_COL], $r[self::$TIMESTAMP_COL]);
         }
 
+        // Generates a Post object from an array of values
         private static function makePostFromArray($arr) {
             return new Post($arr[0], $arr[1], $arr[2], $arr[3], $arr[4]);
         }
 
-        // Makes an array of post objects from mysqli query result
+        // Makes an array of post objects from MySQLi query result
         private static function makePostArray($result) {
-            $posts = [];
 
+            $posts = [];
             if (!$result) return $posts;
 
             while ($row = $result->fetch_row()) {
@@ -92,7 +91,7 @@
             // Check database
             $result = Database::queryDbRow($query, $params, $pattern);
 
-            // Return false if post is not found
+            // Return false if post is not found or anything went wrong
             if ($result == false) return false;
 
             // Turn result row into a post object

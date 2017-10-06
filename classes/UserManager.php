@@ -1,18 +1,16 @@
 <?php
 
-    // Manages user objects and how they interact with the database
-
-    require_once("../library/Constants.php");
     require_once("Database.php");
     require_once("User.php");
 
+    // Manages user objects and how they interact with the database
     class UserManager {
 
         private static $ID_COL       = "id";
         private static $USERNAME_COL = "username";
         private static $PW_HASH_COL  = "pw_hash";
 
-        // Makes a user object from a single mysqli query result row.
+        // Makes a user object from a single MySQLi query result row.
         private static function makeUserFromRow($row) {
             $r = $row->fetch_assoc();
             return new User($r[self::$ID_COL], $r[self::$USERNAME_COL], $r[self::$PW_HASH_COL]);

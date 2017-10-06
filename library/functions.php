@@ -3,7 +3,9 @@
     require_once("../classes/User.php");
     require_once("../classes/UserManager.php");
 
+    // Fetch logged in user (or false if not logged in)
     function getLogin() {
+        // If session is set, get the user with that ID
         return isset($_SESSION["id"]) ? UserManager::getUserById($_SESSION["id"]) : false;
     }
 
@@ -38,6 +40,8 @@
             require("../templates/header.php");
             require("../templates/{$view}");
             require("../templates/footer.php");
+
+            exit;
         }
 
         // If template doesn't exist or fails to render

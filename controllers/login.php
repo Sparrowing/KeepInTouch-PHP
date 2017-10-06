@@ -6,7 +6,7 @@
     require_once("../classes/UserManager.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        // If GET request
+
         render("login_form.php",
                ["title" => "Login",
                 "user" => $u,
@@ -15,7 +15,8 @@
         );
 
     } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // If POST request
+
+        // If any fields weren't filled out
         if (empty($_POST["username"]) || empty($_POST["password"])) {
             render("login_form.php",
                    ["title" => "Login",
@@ -31,6 +32,7 @@
 
         $user = UserManager::getUserByName($username);
 
+        // If user with that name doesn't exist/couldn't be found
         if ($user == false) {
             render("login_form.php",
                    ["title" => "Login",
@@ -41,6 +43,7 @@
             exit;
         }
 
+        // If password is incorrect
         if (!($user->isPasswordMatch($password))) {
             render("login_form.php",
                    ["title" => "Login",
@@ -51,9 +54,12 @@
             exit;
         }
 
+        // Log the user in and take them to their home page
+
         login($user->getId());
 
         redirect("userhome.php?u=" . $user->getId());
+        
     }
 
  ?>

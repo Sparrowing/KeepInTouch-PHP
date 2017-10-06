@@ -1,5 +1,6 @@
 <?php
 
+    // Represents a single user entity
     class User {
 
         private $id;
@@ -36,17 +37,10 @@
             return false;
         }
 
-        public function getId() {
-            return $this->id;
-        }
-
-        public function getUsername() {
-            return $this->username;
-        }
-
-        public function getPwHash() {
-            return $this->pwHash;
-        }
+        // Getters
+        public function getId()       { return $this->id; }
+        public function getUsername() { return $this->username; }
+        public function getPwHash()   { return $this->pwHash; }
 
     }
 
