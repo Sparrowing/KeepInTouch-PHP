@@ -34,21 +34,14 @@
 
             // Return result, or false if anything went wrong
             if (startsWith($query, "SELECT")) {
-
                 // Select returns false if it failed and that's then returned here,
                 //    else returns the query result
                 return $result;
 
-            } else if (startsWith($query, "INSERT")) {
-
-                // Also returns false if it failed
-                return $result;
-
-            } else if (startsWith($query, "DELETE")) {
-
-                // If affected rows isn't zero then this worked
+            } else {
                 return true;
             }
+
         }
 
         // Queries database to confirm a one-row result.  Returns false if query

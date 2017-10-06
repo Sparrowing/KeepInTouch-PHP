@@ -96,10 +96,10 @@
         $newUser = UserManager::createUser($username, $password);
 
         // Display error if user failed to be created
-        if (!$newUser) redirect("error.php");
+        if ($newUser == false) redirect("error.php");
 
         // Log user in and redirect to index
-        
+
         login($newUser->getId());
 
         redirect("index.php");

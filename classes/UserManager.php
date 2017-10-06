@@ -36,7 +36,7 @@
             $result = Database::queryDb($query, $params, $pattern);
 
             // If the query failed return false immediately
-            if (!$result) return false;
+            if ($result == false) return false;
 
             // Fetch and return new user
             $id = Database::getConnection()->insert_id;
