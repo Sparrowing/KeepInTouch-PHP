@@ -21,8 +21,8 @@
         // Formats the raw timestamp saved in the database to a more optimal
         //    date string.
         public static function formatTimestamp($rawTimestamp) {
-            // TODO
-            return $rawTimestamp;
+            $timeString = date("h:i a | F j, o", strtotime($rawTimestamp));
+            return $timeString;
         }
 
         // Returns an object of the user that authored this post
